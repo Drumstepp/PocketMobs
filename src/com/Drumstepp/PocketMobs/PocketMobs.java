@@ -6,12 +6,12 @@ public class PocketMobs extends JavaPlugin {
 
 	public static Plugin pluginInstance;
 	
-	PocketMobs() {
-		pluginInstance = this;
-	}
+	
 	@Override
 	public void onEnable() {
+		pluginInstance = this;
 		getServer().getPluginManager().registerEvents(new EntityInteractListener(), this);
+		getServer().getPluginManager().registerEvents(new BlockInteractListener(), this);
 		//////
 		System.out.println("Pocket Mobs is being enabled!");
 		System.out.println("""
