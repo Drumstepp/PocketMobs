@@ -1,4 +1,5 @@
 package com.Drumstepp.PocketMobs;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -10,8 +11,8 @@ public class PocketMobs extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		pluginInstance = this;
-		getServer().getPluginManager().registerEvents(new EntityInteractListener(), this);
-		getServer().getPluginManager().registerEvents(new BlockInteractListener(), this);
+		getServer().getPluginManager().registerEvents(new EntityInteractListener(this), this);
+		getServer().getPluginManager().registerEvents(new BlockInteractListener(this), this);
 		//////
 		System.out.println("Pocket Mobs is being enabled!");
 		System.out.println("""
@@ -40,6 +41,7 @@ public class PocketMobs extends JavaPlugin {
 	}
 	
 	public void onDisable() {
-		
+		HandlerList.unregisterAll(this);
+		System.out.println("PocketMobs has been disabled. Beep Boop.");
 	}
 }
